@@ -1,0 +1,16 @@
+{
+  "description": "Re-inject the Plainly rules each turn so adherence does not decay in long sessions",
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"${CLAUDE_PLUGIN_ROOT}/hooks/reinforce.sh\"",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  }
+}

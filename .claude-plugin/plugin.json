@@ -1,0 +1,21 @@
+{
+  "name": "plainly",
+  "version": "0.1.0",
+  "description": "Reshape Claude Code's replies for fast scanning: bottom line first, one idea per block, every idea in the Markdown container that fits it, no process narration.",
+  "author": {
+    "name": "Tigran Atayan",
+    "url": "https://github.com/t10ko"
+  },
+  "homepage": "https://github.com/t10ko/plainly",
+  "repository": "https://github.com/t10ko/plainly",
+  "license": "MIT",
+  "keywords": [
+    "output-style",
+    "formatting",
+    "readability",
+    "accessibility",
+    "adhd"
+  ],
+  "outputStyles": "./output-styles/",
+  "hooks": "./hooks/hooks.json"
+}

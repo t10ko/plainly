@@ -1,0 +1,17 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "plainly",
+  "description": "Claude Code output you can scan in three seconds.",
+  "owner": {
+    "name": "Tigran Atayan",
+    "url": "https://github.com/t10ko"
+  },
+  "plugins": [
+    {
+      "name": "plainly",
+      "description": "Bottom line first, one idea per block, no process narration.",
+      "source": "./",
+      "category": "productivity"
+    }
+  ]
+}
