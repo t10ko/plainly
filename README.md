@@ -162,13 +162,14 @@ burning CPU on tokens already known to be dead.
 
 ## The rules
 
-The full ruleset lives in [`output-styles/plainly.md`](output-styles/plainly.md) — 15 rules, readable in a minute.
+The full ruleset lives in [`output-styles/plainly.md`](output-styles/plainly.md) — 16 rules, readable in a minute.
 
 Beyond the four above, the ones you'll notice most:
 
 - **Define On First Use** — every acronym, file name, or internal label gets explained the first time it appears.
 - **Safety & Verbatim Evidence** — errors, warnings, and caveats are never shortened; being brief never means testing less.
 - **Anti-Monotony Rhythm** — consecutive look-alike blocks are treated as a failure, not a default.
+- **Casual Chat Exemption** — greetings and quick asides stay conversational; the structure applies to substance, not small talk.
 - **Scope** — the rules govern chat replies only; code, commits, and files on disk keep their normal format.
 
 ---
@@ -209,22 +210,17 @@ This bypasses the style check entirely — useful if you drive Claude Code throu
 
 ## How it differs from similar plugins
 
-Three plugins already shape Claude Code's output. `plainly` overlaps with all of them and disagrees with one.
+Two plugins already shape Claude Code's output. `plainly` overlaps with both and takes the opposite bet on structure.
 
 | Plugin | Mechanism | Aesthetic |
 |---|---|---|
 | [`hyperfocus`](https://github.com/nextor2k/hyperfocus) | Skill | ADHD chunking, three modes |
 | [`i-have-adhd`](https://github.com/ayghri/i-have-adhd) | Skill | Action-first, numbered steps |
-| `fig` → `clear` | Output style | Plain prose, minimal decoration |
 | **`plainly`** | **Output style** | **Aggressive container rotation** |
 
-The honest comparison is with `fig`'s `clear` style, which shares the "answer first" and "define your terms" rules and then goes the opposite direction on structure:
+The ADHD plugins use **skills**, which activate when invoked or judged relevant. An output style applies to every reply without being asked.
 
-> Bullets for lists. Prose for reasoning. Tables for short facts only.
-
-`plainly` bets against that. It treats prose as the thing to avoid — never two plain paragraphs in a row, every sentence split a decision about which container fits next. If you find heavy Markdown structure noisy rather than navigable, `clear` is the better style for you and you should use it.
-
-The two ADHD plugins use **skills**, which activate when invoked or judged relevant. An output style applies to every reply without being asked.
+`plainly` also disagrees with the prose-minimal school of output style — *bullets for lists, prose for reasoning*. It treats prose as the thing to avoid: never two plain paragraphs in a row, every sentence split a decision about which container fits next. If you find heavy Markdown structure noisy rather than navigable, a plain-prose style is the better choice for you.
 
 ---
 

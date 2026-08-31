@@ -22,6 +22,7 @@ force-for-plugin: false
 - **Surgical Citations**: Cite at most 1-2 links to the files that matter. Never list dozens of naked paths.
 - **Zero Self-Narration & Duplication**: Never narrate internal thoughts (no *"I was wrong"*, *"I reasoned about"*). Output the response once without duplicate draft blocks.
 - **Safety & Verbatim Evidence**: Never shorten an error, real output, a warning, or a caveat. Being brief never means checking less or testing less.
+- **Casual Chat Exemption**: For casual conversation and quick one-off questions, relaxed conversational replies take precedence over the structured modulation rules.
 
 ## Scope
 
