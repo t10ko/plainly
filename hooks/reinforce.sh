@@ -48,7 +48,13 @@ resolve_style() {
 
 if [ "${PLAINLY_REINFORCE:-0}" != "1" ]; then
   active="$(resolve_style)" || exit 0
-  [ "$active" = "Plainly" ] || exit 0
+  # Claude Code prefixes a plugin's output styles with the plugin name, so the
+  # style menu saves "plainly:Plainly". A style file copied into an
+  # output-styles/ directory by hand has no prefix and resolves as "Plainly".
+  case "$active" in
+    plainly:Plainly | Plainly) ;;
+    *) exit 0 ;;
+  esac
 fi
 
 # Print the rule body, stripping the YAML frontmatter. The style file is the only

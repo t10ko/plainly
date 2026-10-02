@@ -7,7 +7,9 @@
 /plugin install plainly@plainly
 ```
 
-Then pick **Plainly** under `/config` → Output style.
+Then turn the style on with `/output-style plainly:Plainly`, or pick it under `/config` → Output style.
+
+That choice applies to the current project only — to use Plainly everywhere, see [Use it in every project](#use-it-in-every-project).
 
 ---
 
@@ -174,13 +176,45 @@ Beyond the four above, the ones you'll notice most:
 
 ---
 
+## Use it in every project
+
+Installed at user scope, the plugin makes the style *available* in every project, but selecting it is a separate setting: `/output-style` and `/config` save it to the current project's `.claude/settings.local.json` and nowhere else.
+
+To select it more widely, set `outputStyle` in the settings file that matches the reach you want:
+
+| File | Applies to |
+|---|---|
+| `~/.claude/settings.json` | Every project on your machine, unless a project sets its own style |
+| `.claude/settings.json`, committed | Everyone working in that repository |
+| `.claude/settings.local.json` | You, in that repository — what the menu writes |
+
+```json
+{ "outputStyle": "plainly:Plainly" }
+```
+
+> **Warning:** Write the full name. Claude Code prefixes a plugin's styles with the plugin name, and a value that matches no style — `"Plainly"`, say — silently gives you the Default style.
+
+To set up a repository for your whole team, commit this as its `.claude/settings.json`. Claude Code registers the marketplace and loads the plugin for each teammate once they trust the folder:
+
+```json
+{
+  "extraKnownMarketplaces": {
+    "plainly": { "source": { "source": "github", "repo": "t10ko/plainly" } }
+  },
+  "enabledPlugins": { "plainly@plainly": true },
+  "outputStyle": "plainly:Plainly"
+}
+```
+
+---
+
 ## The reinforcement hook
 
 An output style is loaded **once**, at session start, into the cached system prompt. In a long session its influence fades and replies drift back toward prose.
 
 `plainly` ships a `UserPromptSubmit` hook that re-states the rules each turn so they stay in recent context.
 
-**It stays silent unless Plainly is actually your active style.** A plugin hook fires whenever the plugin is *enabled*, not when the style is *selected* — so the hook resolves `outputStyle` from your settings files (local → project → user) and prints nothing if the answer isn't `Plainly`.
+**It stays silent unless Plainly is actually your active style.** A plugin hook fires whenever the plugin is *enabled*, not when the style is *selected* — so the hook resolves `outputStyle` from your settings files (local → project → user) and prints nothing unless that's Plainly — `plainly:Plainly`, or `Plainly` for a hand-copied style file.
 
 ### Turning it off
 
@@ -190,7 +224,7 @@ The hook costs tokens on every turn. If you'd rather not pay that:
 /plugin disable plainly@plainly   # disables the style too
 ```
 
-To keep the style without the hook, install the plugin and then delete `hooks/hooks.json` from your local copy, or set the style manually in `settings.json` without installing the plugin at all:
+To keep the style without the hook, skip the plugin: copy [`output-styles/plainly.md`](output-styles/plainly.md) into `~/.claude/output-styles/`, then select it. A style installed by hand has no plugin prefix, so here the name is plain `Plainly`:
 
 ```json
 { "outputStyle": "Plainly" }
@@ -231,7 +265,7 @@ The ADHD plugins use **skills**, which activate when invoked or judged relevant.
 /plugin marketplace remove plainly
 ```
 
-Then set `/config` → Output style back to **Default**.
+Then delete `"outputStyle": "plainly:Plainly"` from any settings file that still names it — left in place, it silently falls back to the Default style.
 
 ---
 
