@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.1
+
+- **No more literal `<details>` tags** — the style listed collapsible `<details>` blocks as a container, but Claude Code renders Markdown without HTML, so replies showed raw `<details>`/`<summary>` tags. Secondary material now goes in a closing `### Details` section, and raw HTML is banned alongside `[!NOTE]`/`[!WARNING]`.
+
 ## 0.2.0
 
 - **Casual Chat Exemption** — new rule: greetings and quick one-off questions get relaxed replies instead of the full structure. It first landed under 0.1.0 without a version bump, so installs cached at 0.1.0 never received it.
