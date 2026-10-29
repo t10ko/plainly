@@ -11,6 +11,8 @@ Then turn the style on with `/output-style plainly:Plainly`, or pick it under `/
 
 That choice applies to the current project only — to use Plainly everywhere, see [Use it in every project](#use-it-in-every-project).
 
+Using [Oh My Pi](https://omp.sh) instead? The same marketplace installs it there — see [Oh My Pi](#oh-my-pi).
+
 ---
 
 ## What it does
@@ -243,6 +245,30 @@ This bypasses the style check entirely — useful if you drive Claude Code throu
 
 ---
 
+## Oh My Pi
+
+[Oh My Pi](https://omp.sh) (OMP) reads Claude Code marketplaces, so the install is the same two steps:
+
+```bash
+omp plugin marketplace add t10ko/plainly
+omp plugin install plainly@plainly
+```
+
+Inside a session, `/marketplace add t10ko/plainly` and `/marketplace install plainly@plainly` do the same; restart OMP afterwards, since it loads new extensions at startup.
+
+OMP has no output styles and does not run Claude Code hooks, so the plugin ships a small OMP extension, [`omp/plainly.ts`](omp/plainly.ts). It reads the same [`output-styles/plainly.md`](output-styles/plainly.md) and, on every prompt you send:
+
+- **appends the rules to the system prompt**, the job the output style does in Claude Code;
+- **re-states them in a hidden message after your prompt**, the job the reinforcement hook does.
+
+Three things work differently from Claude Code:
+
+- **It is on as soon as it is installed.** There is no style to select.
+- **`/plainly off` and `/plainly on` toggle it** for the current session, from the next prompt. The choice is saved in the session, so it survives a resume; `/plainly` alone shows the current state.
+- **Subagents are left alone.** Their replies go to the main agent, not to you.
+
+---
+
 ## How it differs from similar plugins
 
 Two plugins already shape Claude Code's output. `plainly` overlaps with both and takes the opposite bet on structure.
@@ -267,6 +293,13 @@ The ADHD plugins use **skills**, which activate when invoked or judged relevant.
 ```
 
 Then delete `"outputStyle": "plainly:Plainly"` from any settings file that still names it — left in place, it silently falls back to the Default style.
+
+On Oh My Pi:
+
+```bash
+omp plugin uninstall plainly@plainly
+omp plugin marketplace remove plainly
+```
 
 ---
 

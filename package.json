@@ -1,0 +1,22 @@
+{
+  "name": "plainly",
+  "version": "0.3.0",
+  "description": "Reshape coding-agent replies for fast scanning: bottom line first in plain everyday words, one idea per block, every idea in the Markdown container that fits it, no process narration.",
+  "type": "module",
+  "author": "Tigran Atayan (https://github.com/t10ko)",
+  "homepage": "https://github.com/t10ko/plainly",
+  "repository": "github:t10ko/plainly",
+  "license": "MIT",
+  "keywords": [
+    "omp-plugin",
+    "oh-my-pi",
+    "output-style",
+    "formatting",
+    "readability"
+  ],
+  "omp": {
+    "extensions": [
+      "./omp/plainly.ts"
+    ]
+  }
+}

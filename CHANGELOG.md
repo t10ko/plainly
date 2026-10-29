@@ -9,6 +9,7 @@
   - **Symmetric Inquiries** — questions and option lists give brief context and symmetric `[Action] — [Tradeoff]` choices with `(Recommended)` first.
 - **BLUF sharpened** — the opening sentence now states the answer in abstract, high-level terms, and the whole contract is written in simple, clear English with zero ambiguous words.
 - **Scope unchanged** — the same rules govern chat replies only; code, commits, and files on disk keep their normal format.
+- **Oh My Pi support** — the same marketplace now installs Plainly in [Oh My Pi](https://omp.sh). OMP has no output styles and does not run Claude Code hooks, so a small OMP extension reads the same style file and, on each prompt, appends the rules to the system prompt and re-states them in a hidden message. `/plainly on|off` toggles it per session, and subagents are left alone.
 
 ## 0.2.1
 
