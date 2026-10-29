@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.3.0
+
+- **Ported the latest source contract** from the upstream project — four new rules that change how replies read, not just how they're laid out:
+  - **Abstract By Default** — replies say what something does and why it matters in everyday words; file names, functions, paths, and settings appear only when the reader needs them to decide or act.
+  - **Functional Grounding Over Jargon** — internal code terms and acronyms must come with their concrete human outcome.
+  - **Adaptive Brevity** — as short as the task allows without dropping important details; all filler and meta-talk cut.
+  - **Symmetric Inquiries** — questions and option lists give brief context and symmetric `[Action] — [Tradeoff]` choices with `(Recommended)` first.
+- **BLUF sharpened** — the opening sentence now states the answer in abstract, high-level terms, and the whole contract is written in simple, clear English with zero ambiguous words.
+- **Scope unchanged** — the same rules govern chat replies only; code, commits, and files on disk keep their normal format.
+
 ## 0.2.1
 
 - **No more literal `<details>` tags** — the style listed collapsible `<details>` blocks as a container, but Claude Code renders Markdown without HTML, so replies showed raw `<details>`/`<summary>` tags. Secondary material now goes in a closing `### Details` section, and raw HTML is banned alongside `[!NOTE]`/`[!WARNING]`.

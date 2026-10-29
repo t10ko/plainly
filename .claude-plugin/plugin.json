@@ -1,7 +1,7 @@
 {
   "name": "plainly",
-  "version": "0.2.1",
-  "description": "Reshape Claude Code's replies for fast scanning: bottom line first, one idea per block, every idea in the Markdown container that fits it, no process narration.",
+  "version": "0.3.0",
+  "description": "Reshape Claude Code's replies for fast scanning: bottom line first in plain everyday words, one idea per block, every idea in the Markdown container that fits it, no process narration.",
   "author": {
     "name": "Tigran Atayan",
     "url": "https://github.com/t10ko"

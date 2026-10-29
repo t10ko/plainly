@@ -17,9 +17,10 @@ That choice applies to the current project only — to use Plainly everywhere, s
 
 `plainly` is an [output style](https://code.claude.com/docs/en/output-styles) — it rewrites the system prompt so every reply arrives pre-structured for scanning.
 
-Four rules carry most of the weight:
+Five rules carry most of the weight:
 
 - **The answer comes first.** Sentence one is the verdict, not a warm-up.
+- **Plain words by default.** Replies say what something does and why it matters in everyday words; file names and settings appear only when you need them to decide or act.
 - **One idea per block.** No paragraph makes you hold two thoughts at once.
 - **Every idea in the container that fits it.** Tradeoffs become tables, steps become numbered lists, caveats become callouts.
 - **No process narration.** You never read "let me check…" or "I was wrong about…".
@@ -164,7 +165,7 @@ burning CPU on tokens already known to be dead.
 
 ## The rules
 
-The full ruleset lives in [`output-styles/plainly.md`](output-styles/plainly.md) — 16 rules, readable in a minute.
+The full ruleset lives in [`output-styles/plainly.md`](output-styles/plainly.md) — 20 rules, readable in a minute.
 
 Beyond the four above, the ones you'll notice most:
 
