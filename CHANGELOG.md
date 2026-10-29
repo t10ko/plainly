@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.3.1
+
+Oh My Pi only — Claude Code behaviour is unchanged.
+
+- **Rules join the cached system-prompt head** — the rules now sit just before OMP's per-folder `<project-context>` block instead of after it, so they fall under OMP's system cache breakpoint and are reused across sessions and folders instead of being re-billed behind it.
+- **One-line reminder instead of a full copy each prompt** — the hidden per-prompt message is now a single line naming the rules (built from the style file's rule names), not the whole rule text. Each prompt used to add about 1,400 tokens of repeated rules to history; a two-prompt test on Sonnet 5.5 dropped the second prompt's cache write from 1,653 to 271 tokens.
+- **Cache report in the footer** — after every model call the status bar shows how much of the prompt was read from cache, written to it, and sent uncached, and a warning appears when a call re-writes most of the prompt (idle past the cache lifetime, a model or tool change, a changed system prompt). The first call after a session starts, switches, or compacts is never flagged.
+- **`/plainly on|off` now says it costs one uncached prompt** — toggling changes the system prompt, so the next request re-reads the conversation without the cache once.
+
 ## 0.3.0
 
 - **Ported the latest source contract** from the upstream project — four new rules that change how replies read, not just how they're laid out:

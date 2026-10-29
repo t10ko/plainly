@@ -258,14 +258,17 @@ Inside a session, `/marketplace add t10ko/plainly` and `/marketplace install pla
 
 OMP has no output styles and does not run Claude Code hooks, so the plugin ships a small OMP extension, [`omp/plainly.ts`](omp/plainly.ts). It reads the same [`output-styles/plainly.md`](output-styles/plainly.md) and, on every prompt you send:
 
-- **appends the rules to the system prompt**, the job the output style does in Claude Code;
-- **re-states them in a hidden message after your prompt**, the job the reinforcement hook does.
+- **adds the rules to the system prompt**, the job the output style does in Claude Code;
+- **adds a one-line reminder after your prompt** that names the rules, the job the reinforcement hook does.
 
-Three things work differently from Claude Code:
+Both are laid out for OMP's prompt cache. The rules sit in the part of the system prompt OMP caches and shares across sessions and folders, and the reminder is a single line, so a long session does not pile up a fresh copy of every rule on each prompt.
+
+Four things work differently from Claude Code:
 
 - **It is on as soon as it is installed.** There is no style to select.
-- **`/plainly off` and `/plainly on` toggle it** for the current session, from the next prompt. The choice is saved in the session, so it survives a resume; `/plainly` alone shows the current state.
+- **`/plainly off` and `/plainly on` toggle it** for the current session, from the next prompt. The choice is saved in the session, so it survives a resume; `/plainly` alone shows the current state. Toggling changes the system prompt, so the next prompt is read once without the cache.
 - **Subagents are left alone.** Their replies go to the main agent, not to you.
+- **The footer shows prompt-cache use** after each model call — the share read from cache, plus tokens read, written, and sent uncached — and warns when a call re-writes most of the prompt.
 
 ---
 
